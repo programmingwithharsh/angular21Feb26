@@ -1,1 +1,37 @@
-<p>product-list works!</p>
+<p class="mt-2">product-list works!</p>
+<h1>{{ pageTitle }}</h1> <!-- Expression, Interpolation-->
+<div class="alert alert-primary">2 + 2 is {{ 2 + 2 }}</div>
+
+<div><input type="text" placeholder="Filter Products" class="form-control" [(ngModel)]="listFilter"></div>
+<!-- Two Way Binding -->
+<div class="m-2">
+    Filtered by: {{ listFilter }}
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered" *ngIf="products && products.length">
+        <thead>
+            <tr>
+                <th><button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide': 'Show' }}
+                        Image</button></th> <!-- Event Binding -->
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Release Date</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products">
+            <tr>
+                <td><img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" /></td>
+                <!-- Property Binding -->
+                <td>{{ product.productName | uppercase }}</td>
+                <td>{{ product.productCode | convertToSpaces: '-' }}</td>
+                <td>{{ product.releaseDate }}</td>
+                <td>{{ product.description | lowercase }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.starRating }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
