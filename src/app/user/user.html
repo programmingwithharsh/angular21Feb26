@@ -1,1 +1,8 @@
-<p>user works!</p>
+<div *ngIf="users && users.length">
+    <ul>
+        <li *ngFor="let user of users">
+            {{ user.username }}
+        </li>
+    </ul>
+</div>
+<pre>{{ users | json}}</pre>
