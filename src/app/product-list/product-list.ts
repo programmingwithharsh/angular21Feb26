@@ -82,4 +82,8 @@ export class ProductList implements OnInit {
     // console.log("Clicked !!");
     this.showImage = !this.showImage;
   }
+
+  onRatingClicked(message: string) {
+    this.pageTitle = message;
+  }
 }

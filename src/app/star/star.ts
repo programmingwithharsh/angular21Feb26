@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 })
 export class Star implements OnInit, OnChanges {
   @Input() rating = 0;
+  @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>(); // custom event
 
   constructor() {
     console.log('Constructor called');
@@ -21,5 +22,9 @@ export class Star implements OnInit, OnChanges {
   ngOnInit() {
     console.log('ngOnInit called');
     console.log("Rating inside ngOnInit", this.rating);
+  }
+
+  onClick() {
+    this.ratingClicked.emit(`The rating ${this.rating} was clicked!`); // Emits an events
   }
 }
