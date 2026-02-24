@@ -21,7 +21,7 @@
                 <th>Rating</th>
             </tr>
         </thead>
-        <tbody *ngFor="let product of products">
+        <tbody *ngFor="let product of products | filterProduct: listFilter">
             <tr>
                 <td><img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" /></td>
                 <!-- Property Binding -->
