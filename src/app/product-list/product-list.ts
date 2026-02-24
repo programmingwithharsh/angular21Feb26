@@ -3,10 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from '../convert-to-spaces-pipe';
 import { FilterProductPipe } from '../filter-product-pipe';
+import { Star } from '../star/star';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe],
+  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe, Star],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -18,11 +19,11 @@ export class ProductList implements OnInit {
   products: any[] = [];
 
   constructor() {
-    console.log("Constructor 1");
+    // console.log("Constructor 1");
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit 2");
+    // console.log("ngOnInit 2");
     this.products = [
       {
         "productId": 1,
@@ -78,7 +79,7 @@ export class ProductList implements OnInit {
   }
 
   toggleImage() {
-    console.log("Clicked !!");
+    // console.log("Clicked !!");
     this.showImage = !this.showImage;
   }
 }
