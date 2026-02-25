@@ -30,7 +30,7 @@
                 <!-- Property Binding -->
                 <td>
                     <!-- Recommended -->
-                    <a [routerLink]="['/products', product.productId]">{{ product.productName | uppercase }} | </a>
+                    <a [routerLink]="['/products', product.productId]">{{ product.productName | uppercase }} </a>
                     <!-- <a routerLink="/products/{{product.productId}}">{{ product.productName | uppercase }}</a> -->
                 </td>
                 <td>{{ product.productCode | convertToSpaces: '-' }}</td>
