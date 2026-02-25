@@ -1,1 +1,100 @@
-<p>add-product works!</p>
+<pre>
+    JSON {{ productForm.value | json }}
+    Invalid {{ productForm.invalid | json }}
+    Products {{ products | json }}
+</pre>
+
+<div class="col-6">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Product Name:</label>
+            <input type="text" formControlName="productName" class="form-control">
+            <small *ngIf="productForm.get('productName')?.invalid && productForm.get('productName')?.touched">
+                * Required
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Product Code:</label>
+            <input type="text" formControlName="productCode" class="form-control">
+            <small *ngIf="productForm.get('productCode')?.invalid && productForm.get('productCode')?.touched">
+                * Required
+            </small>
+        </div>
+        <div class="form-group">
+            <label>Release date:</label>
+            <input type="date" formControlName="releaseDate" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input type="text" formControlName="description" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Price:</label>
+            <input type="text" formControlName="price" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Rating:</label>
+            <input type="text" formControlName="starRating" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Url:</label>
+            <input type="text" formControlName="imageUrl" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" [disabled]="productForm.invalid" class="btn btn-primary mt-2">
+        </div>
+    </form>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered" *ngIf="products && products.length">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Release Date</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of products">
+            <tr>
+                <td><img [src]="product.imageUrl" width="50" height="50" /></td>
+                <td>{{ product.productName }}</td>
+                <td>{{ product.productCode}}</td>
+                <td>{{ product.releaseDate }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.starRating}} </td>
+                <td>
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id hic, nulla nostrum quisquam animi quo
+                    fugit a obcaecati eos veritatis sunt dolorem nam magni aliquam. Quos nam doloremque neque eveniet.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
