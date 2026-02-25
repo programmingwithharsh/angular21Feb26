@@ -5,10 +5,11 @@ import { ConvertToSpacesPipe } from '../convert-to-spaces-pipe';
 import { FilterProductPipe } from '../filter-product-pipe';
 import { Star } from '../star/star';
 import { ProductService } from '../product-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe, Star],
+  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe, Star, RouterLink],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
