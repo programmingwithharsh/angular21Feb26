@@ -23,9 +23,16 @@
         </thead>
         <tbody *ngFor="let product of products | filterProduct: listFilter">
             <tr>
-                <td><img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" /></td>
+                <td>
+                    <img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" />
+                    <!--  <img *ngIf="showImage" src="{{ product.imageUrl }}" width="50" height="50" /> -->
+                </td>
                 <!-- Property Binding -->
-                <td><a [routerLink]="['/products', product.productId]">{{ product.productName | uppercase }}</a></td>
+                <td>
+                    <!-- Recommended -->
+                    <a [routerLink]="['/products', product.productId]">{{ product.productName | uppercase }} | </a>
+                    <!-- <a routerLink="/products/{{product.productId}}">{{ product.productName | uppercase }}</a> -->
+                </td>
                 <td>{{ product.productCode | convertToSpaces: '-' }}</td>
                 <td>{{ product.releaseDate }}</td>
                 <td>{{ product.description | lowercase }}</td>
