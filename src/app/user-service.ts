@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface IUser {
-  id: number;
-  username: string;
+  _id?: string;
+  name: string;
+  email: string;
 }
 
 @Injectable({
@@ -12,7 +13,7 @@ export interface IUser {
 })
 export class UserService {
   // private apiUrl = "https://jsonplaceholder.typicode.com/users";
-  private apiUrl = "http://localhost:3000/";
+  private apiUrl = "http://localhost:3000/users";
 
   constructor(private http: HttpClient) {
 
@@ -22,7 +23,7 @@ export class UserService {
     return this.http.get<IUser[]>(this.apiUrl);
   }
 
-  getUserById(id: number): Observable<IUser> {
+  getUserById(id: string): Observable<IUser> {
     return this.http.get<IUser>(`${this.apiUrl}/${id}`);
   }
 
@@ -30,11 +31,11 @@ export class UserService {
     return this.http.post<IUser>(this.apiUrl, user);
   }
 
-  updateUser(id: number, user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(`${this.apiUrl}/${id}`, user);
+  updateUser(id: string, user: IUser): Observable<IUser> {
+    return this.http.put<IUser>(`${this.apiUrl}/${id}`, user);
   }
 
-  deleteUser(id: number): Observable<void> {
+  deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
