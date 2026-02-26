@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Welcome } from './welcome/welcome';
 import { ProductList } from './product-list/product-list';
 import { About } from './about/about';
-import { UserList } from './user/user-list'; // userlist component
+import { UserList } from './user-list/user-list'; // userlist component
 import { Title } from './title/title';
 import { AddProduct } from './add-product/add-product';
 import { ProductDetail } from './product-detail/product-detail';

@@ -1,3 +1,5 @@
+<pre *ngIf="false">{{ products | json}}</pre>
+
 <p class="mt-2">product-list works!</p>
 <h1>{{ pageTitle }}</h1> <!-- Expression, Interpolation-->
 <div class="alert alert-primary">2 + 2 is {{ 2 + 2 }}</div>
@@ -41,4 +43,8 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="alert alert-danger" role="alert">
+  {{ errorMessage }}
 </div>

@@ -1,4 +1,4 @@
-import { NgIf, NgFor, UpperCasePipe, LowerCasePipe } from '@angular/common';
+import { NgIf, NgFor, UpperCasePipe, LowerCasePipe, JsonPipe} from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from '../convert-to-spaces-pipe';
@@ -6,10 +6,11 @@ import { FilterProductPipe } from '../filter-product-pipe';
 import { Star } from '../star/star';
 import { ProductService } from '../product-service';
 import { RouterLink } from '@angular/router';
+import { IProduct } from '../iproduct';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe, Star, RouterLink],
+  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, FilterProductPipe, Star, RouterLink, JsonPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -17,8 +18,9 @@ export class ProductList implements OnInit {
   pageTitle = "Product List"; // property
   showImage: boolean = false;
   listFilter: string = 'cart';
+  errorMessage = "";
 
-  products: any[] = [];
+  products: IProduct[] = [];
 
   constructor(private productServ: ProductService) { // calling a service
     // console.log("Constructor 1");
@@ -26,7 +28,13 @@ export class ProductList implements OnInit {
 
   ngOnInit(): void {
     // console.log("ngOnInit 2");
-    this.products = this.productServ.getProducts();
+    this.productServ.getProducts().subscribe({
+      next: products => {
+        this.products = products;
+        console.log(this.products);
+      },
+      error: err => this.errorMessage = err
+    })
   }
 
   toggleImage() {

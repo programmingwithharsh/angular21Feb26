@@ -1,18 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../product-service';
+import { IProduct } from '../iproduct';
+import { NgIf, JsonPipe } from '@angular/common';
+
 @Component({
   selector: 'app-product-detail',
-  imports: [],
+  imports: [JsonPipe, NgIf],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.scss',
 })
 export class ProductDetail implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router) {
+  product: IProduct | undefined;
+  errorMessage = '';
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) {
 
   }
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get("id"));
-    console.log(id);
+    if (id) {
+      this.getProduct(id);
+    }
+  }
+
+  getProduct(id: number) {
+    this.productService.getProduct(id).subscribe({
+      next: product => {
+        this.product = product;
+      },
+      error: err => this.errorMessage = err
+    })
   }
 
   goBack() {
