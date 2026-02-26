@@ -6,12 +6,13 @@ import { UserList } from './user-list/user-list'; // userlist component
 import { Title } from './title/title';
 import { AddProduct } from './add-product/add-product';
 import { ProductDetail } from './product-detail/product-detail';
+import { productDetailGuard } from './product-detail-guard';
 
 export const routes: Routes = [
     { path: 'welcome', component: Welcome },
     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
     { path: 'products', component: ProductList },
-    { path: 'products/:id', component: ProductDetail }, // Dynamic Route
+    { path: 'products/:id', canActivate: [productDetailGuard], component: ProductDetail }, // Dynamic Route
     { path: 'about', component: About },
     { path: 'users', component: UserList },
     { path: 'title', component: Title },
