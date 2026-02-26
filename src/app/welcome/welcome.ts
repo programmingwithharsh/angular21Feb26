@@ -16,4 +16,8 @@ export class Welcome {
   goToProducts() {
     this.router.navigate(["/products"]);
   }
+
+  generateError() {
+    throw new Error("Test error");
+  }
 }
