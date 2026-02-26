@@ -1,1 +1,8 @@
 <p>welcome works!</p>
+<button class="btn btn-primary" (click)="goToProducts()">
+    Go to Products
+</button>
+
+<div>
+    <a [routerLink]="['/products']" [queryParams]="{ page: 1, sort: 'asc'}">Go to Products with params</a>
+</div>
