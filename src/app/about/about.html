@@ -1,1 +1,11 @@
 <p>about works!</p>
+
+<p>Count: {{ count() }}</p>
+<button class="btn btn-primary" (click)="increase()">Increase</button>
+
+<h2 class="m-4">Total Count {{ totalCount() }} </h2>
+
+<button class="btn btn-primary m-2" (click)="add(1)">Add 1</button>
+<button class="btn btn-primary m-2" (click)="add(5)">Add 5</button>
+
+<button  class="btn btn-primary m-2" (click)="reset()">Reset</button>
