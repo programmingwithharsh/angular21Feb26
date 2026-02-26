@@ -1,5 +1,3 @@
-<pre *ngIf="false">{{ products | json}}</pre>
-
 <div>
     <a [routerLink]="['/products/1']" [queryParams]="{ page: 1, sort: 'asc'}">Pass Query Params</a>
 </div>
@@ -14,7 +12,7 @@
     Filtered by: {{ listFilter }}
 </div>
 <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered" *ngIf="products && products.length">
+    <table class="table table-striped table-hover table-bordered" *ngIf="products$ | async as products">
         <thead>
             <tr>
                 <th><button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide': 'Show' }}
@@ -27,7 +25,7 @@
                 <th>Rating</th>
             </tr>
         </thead>
-        <tbody *ngFor="let product of products | filterProduct: listFilter">
+        <tbody *ngFor="let product of products$ | async">
             <tr>
                 <td>
                     <img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" />
