@@ -1,4 +1,14 @@
 <p>welcome works!</p>
+<div [ngStyle]="{ color: price > 100 ? 'red': 'green'}">
+    {{ price }}
+</div>
+<div>
+    <h1>Programming with Harsh</h1>
+    <h1 appHighlight>Programming with Harsh</h1>
+    <h1 appHighlight appHighlightBc="blue">Programming with Harsh</h1>
+    <h1 appHighlight appHighlightBc="gray" hightlightTextColor="white" hightlightBorder="12px solid red">Programming
+        with Harsh</h1>
+</div>
 <button class="btn btn-danger m-2" (click)="generateError()">
     Error
 </button>
