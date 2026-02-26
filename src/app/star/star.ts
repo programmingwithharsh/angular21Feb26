@@ -11,17 +11,17 @@ export class Star implements OnInit, OnChanges {
   @Output() ratingClicked: EventEmitter<string> = new EventEmitter<string>(); // custom event
 
   constructor() {
-    console.log('Constructor called');
+    // console.log('Constructor called');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges called');
-    console.log("Current rating: ", this.rating);
+    // console.log('ngOnChanges called');
+    // console.log("Current rating: ", this.rating);
   }
 
   ngOnInit() {
-    console.log('ngOnInit called');
-    console.log("Rating inside ngOnInit", this.rating);
+    // console.log('ngOnInit called');
+    // console.log("Rating inside ngOnInit", this.rating);
   }
 
   onClick() {
