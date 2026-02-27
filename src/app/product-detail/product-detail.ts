@@ -49,8 +49,8 @@ export class ProductDetail implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub1.unsubscribe(); // unsubscribe
-    this.sub2.unsubscribe(); // unsubscribe
+    this.sub1?.unsubscribe(); // unsubscribe, ?. optional chaining, if sub exist -> unsubsribe
+    this.sub2?.unsubscribe(); // unsubscribe
     //  this.subs.forEach(s => s.unsubscribe())
     console.log("ngOnDestroy - Component unmounted");
   }

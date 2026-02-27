@@ -1,4 +1,3 @@
-ng g c Welcome
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Title } from './title';
