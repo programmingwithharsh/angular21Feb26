@@ -12,7 +12,8 @@
     Filtered by: {{ listFilter }}
 </div>
 <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered" *ngIf="products$ | async as products">
+    @if (products$ | async; as products){
+    <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
                 <th><button class="btn btn-primary" (click)="toggleImage()">{{ showImage ? 'Hide': 'Show' }}
@@ -25,10 +26,13 @@
                 <th>Rating</th>
             </tr>
         </thead>
-        <tbody *ngFor="let product of products$ | async">
+        <tbody>
+            @for( product of products; track product.productId){
             <tr>
                 <td>
-                    <img *ngIf="showImage" [src]="product.imageUrl" width="50" height="50" />
+                    @if (showImage){
+                    <img [src]="product.imageUrl" width="50" height="50" />
+                    }
                     <!--  <img *ngIf="showImage" src="{{ product.imageUrl }}" width="50" height="50" /> -->
                 </td>
                 <!-- Property Binding -->
@@ -43,10 +47,14 @@
                 <td>{{ product.price }}</td>
                 <td><app-star [rating]="product.starRating" (ratingClicked)="onRatingClicked($event)"></app-star></td>
             </tr>
+            }
         </tbody>
     </table>
+    }
 </div>
 
+@if (errorMessage){
 <div class="alert alert-danger" role="alert">
     {{ errorMessage }}
 </div>
+}

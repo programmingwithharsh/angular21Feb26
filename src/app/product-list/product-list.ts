@@ -1,4 +1,4 @@
-import { NgIf, NgFor, UpperCasePipe, LowerCasePipe, AsyncPipe } from '@angular/common';
+import { UpperCasePipe, LowerCasePipe, AsyncPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ConvertToSpacesPipe } from '../convert-to-spaces-pipe';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
-  imports: [NgIf, NgFor, FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, Star, RouterLink, AsyncPipe],
+  imports: [FormsModule, UpperCasePipe, LowerCasePipe, ConvertToSpacesPipe, Star, RouterLink, AsyncPipe],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
