@@ -8,6 +8,6 @@ import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  username: string = '2';
+  username: string = 2;
   protected readonly title = signal('dashboard');
 }
